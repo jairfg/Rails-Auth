@@ -1,46 +1,73 @@
 <header data-controller="navbar">
   <nav class="bg-[#F8FAFC] border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <%= link_to root_path do %>
-        <%= image_tag("logo.svg", width: "180", class: "shrink-0") %>
-      <% end %>
+    <%= link_to root_path, class: "flex items-center gap-2" do %>
+      <span class="text-xl font-extrabold tracking-tight text-slate-900">
+        Rails
+        <span class="text-[#B91C1C]">Auth</span>
+      </span>
+    <% end %>
+
       <div class="hidden md:flex gap-4 items-center">
         <% if current_user %>
-            <div><%= current_user.email %></div>
-            <%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete,
-            class: "text-sm font-semibold text-white
-                    bg-red-600 hover:bg-red-700
-                    px-4 py-2 rounded-lg shadow-sm transition" %>
-            <%=  button_to root_path, id: "open_options_icon", class: "flex items-center" do %>
-              <i class="fa-solid fa-gear"></i>
-            <% end %>
-        <% else %>
-          <%= button_to 'Iniciar sesión', new_user_session_path, method: :get,
-            class: "text-sm font-semibold text-slate-600
-                    hover:text-slate-900 transition" %>
+          <span class="text-sm text-slate-600">
+            <%= current_user.email %>
+          </span>
 
-          <%= button_to 'Registrarse', new_user_registration_path, method: :get,
+          <%= button_to 'Cerrar sesión',
+            destroy_user_session_path,
+            method: :delete,
             class: "text-sm font-semibold text-white
-                    bg-[#16A34A] hover:bg-[#15803D]
+                    bg-[#991B1B] hover:bg-[#7F1D1D]
                     px-4 py-2 rounded-lg shadow-sm transition" %>
+
+          <%= button_to root_path,
+            id: "open_options_icon",
+            class: "text-slate-500 hover:text-slate-900 transition flex items-center" do %>
+            <i class="fa-solid fa-gear text-lg"></i>
+          <% end %>
+        <% else %>
+          <%= button_to 'Login',
+            new_user_session_path,
+            method: :get,
+            class: "text-sm font-semibold text-[#B91C1C]
+                    border border-[#B91C1C]
+                    hover:bg-[#FEE2E2]
+                    px-4 py-2 rounded-lg transition" %>
+
+          <%= button_to 'Register',
+            new_user_registration_path,
+            method: :get,
+            class: "text-sm font-semibold text-white
+                    bg-[#B91C1C] hover:bg-[#991B1B]
+                    px-4 py-2 rounded-lg shadow-md transition" %>
         <% end %>
       </div>
+
       <button
         data-action="click->navbar#toggle"
-        class="md:hidden text-slate-700 focus:outline-none">
+        class="md:hidden text-slate-700 focus:outline-none text-xl">
         ☰
       </button>
     </div>
+
     <div
       data-navbar-target="menu"
       class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4">
       <div class="flex flex-col gap-3">
-        <%= button_to 'Iniciar sesión', '#',
-          class: "text-sm font-semibold text-slate-700 text-left" %>
+        <%= button_to 'Login',
+          new_user_session_path,
+          method: :get,
+          class: "text-sm font-semibold text-[#B91C1C]
+                  border border-[#B91C1C]
+                  px-4 py-2 rounded-lg text-center" %>
 
-        <%= button_to 'Registrarse', '#',
+        <%= button_to 'Register',
+          new_user_registration_path,
+          method: :get,
           class: "text-sm font-semibold text-white
-                  bg-[#16A34A]
+                  bg-[#B91C1C]
+                  hover:bg-[#991B1B]
                   px-4 py-2 rounded-lg text-center" %>
       </div>
     </div>
