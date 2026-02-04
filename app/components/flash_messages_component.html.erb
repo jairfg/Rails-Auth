@@ -1,0 +1,7 @@
+<div data-controller="flash-messages"
+     class="fixed top-20 right-4 z-50 space-y-3 w-full max-w-md px-4" 
+     id="flash-container">
+  <% flash_messages.each do |type, message| %>
+    <%= render ToastComponent.new(type: type, message: message) %>
+  <% end %>
+</div>

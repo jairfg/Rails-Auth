@@ -20,12 +20,6 @@
             class: "text-sm font-semibold text-white
                     bg-[#991B1B] hover:bg-[#7F1D1D]
                     px-4 py-2 rounded-lg shadow-sm transition" %>
-
-          <%= button_to root_path,
-            id: "open_options_icon",
-            class: "text-slate-500 hover:text-slate-900 transition flex items-center" do %>
-            <i class="fa-solid fa-gear text-lg"></i>
-          <% end %>
         <% else %>
           <%= button_to 'Login',
             new_user_session_path,

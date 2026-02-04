@@ -1,0 +1,23 @@
+<div data-controller="toast"
+     data-toast-component-duration-value="<%= @duration %>"
+     data-flash-messages-component-target="toast"
+     class="<%= toast_config[:bg_color] %> border-l-4 <%= toast_config[:border_color] %>
+           rounded-md shadow-md p-4 flex items-start gap-3 toast-notification">
+  <div class="flex-shrink-0">
+    <div class="<%= toast_config[:icon_bg] %> rounded-full w-8 h-8 flex items-center justify-center">
+      <i class="fa-solid <%= toast_config[:icon] %> <%= toast_config[:icon_color] %> text-sm"></i>
+    </div>
+  </div>
+  <div class="flex-1 min-w-0">
+    <p class="text-sm font-semibold text-slate-900 mb-0.5">
+      <%= toast_config[:title] %>
+    </p>
+    <p class="text-sm text-slate-600">
+      <%= @message %>
+    </p>
+  </div>
+  <button data-action="click->toast#close"
+          class="flex-shrink-0 <%= toast_config[:close_color] %> <%= toast_config[:close_hover] %> transition">
+    <i class="fa-solid fa-xmark text-lg"></i>
+  </button>
+</div>
